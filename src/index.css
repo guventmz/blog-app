@@ -897,6 +897,11 @@ form button:hover {
   padding-top: 90px;
 }
 
+.ins-photo img {
+  width: 100%;
+  height: auto;
+}
+
 /*photos comp*/
 
 .btn-container {

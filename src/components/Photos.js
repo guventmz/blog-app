@@ -54,8 +54,10 @@ class Photos extends Component {
       render() {
         const photosArr = this.props.photos.map(url => {
             return (
-                <img key={Math.random()*10000} className="ins-photo" src={url} alt=""/>
-            )
+                <div className="ins-photo">
+                    <img key={Math.random()*10000} src={url} alt=""/>
+                </div>
+            )   
         })
         
         if(this.state.loading === true) { 
