@@ -294,10 +294,11 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   background-image: url("/images/contact-bg.jpeg");
   background-size: cover;
+  overflow: hidden;
 }
 
 form {
@@ -305,7 +306,7 @@ form {
   display: -ms-flexbox;
   display: flex;
   width: 50%;
-  height: 70vh;
+  height: 70%;
   padding: 0;
   -ms-flex-pack: distribute;
       justify-content: space-around;
@@ -945,6 +946,8 @@ form button:hover {
   font-size: 15px;
   padding-top: 60px;
   line-height: 1.5;
+  width: 100%;
+  text-align: center;
 }
 
 @media screen and (max-width: 600px) {
