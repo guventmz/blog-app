@@ -36,6 +36,7 @@ class Contact extends React.Component {
   };
 
   render() {
+    console.log(this.props.history);
     if (this.state.isSubmited === false) {
       return (
         <div className="contact-container">
@@ -47,14 +48,17 @@ class Contact extends React.Component {
                 type="text"
                 placeholder="Name"
                 onChange={this.handleChange}
+                required
               />
             </div>
             <div className="input-field">
               <input
                 id="email"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                 type="text"
                 placeholder="E-mail"
                 onChange={this.handleChange}
+                required
               />
             </div>
             <div className="input-field">
@@ -64,6 +68,7 @@ class Contact extends React.Component {
                 className="textarea"
                 placeholder="What do you want to say?"
                 onChange={this.handleChange}
+                required
               />
             </div>
             <div className="row">

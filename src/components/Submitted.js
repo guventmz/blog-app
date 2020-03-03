@@ -6,7 +6,6 @@ function Submitted() {
       <div className="content">
         <img src="/images/submited-tick.png" alt="" />
         <h1>SUBMITTED</h1>
-        <p>Thank You!</p>
       </div>
     </div>
   );
