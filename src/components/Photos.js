@@ -1,16 +1,23 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
 import { getPhotos } from "./store/actions/allActions"
+import ReactGA from 'react-ga'
 
 class Photos extends Component {
-    
+
     state = {
-        loading: true, 
+        loading: true,
+    }
+
+    UNSAFE_componentWillMount(){
+      ReactGA.set({ page: window.location.pathname });
+      ReactGA.pageview(window.location.pathname);
     }
 
     componentDidMount() {
         this.props.getPhotos(this.props.match.params.page);
     }
+
     UNSAFE_componentWillUpdate(){
         if(this.state.loading === true){
             this.setState({
@@ -21,7 +28,7 @@ class Photos extends Component {
     componentDidUpdate(prevProps) {
         if(this.props.location !== prevProps.location){
             this.props.getPhotos(this.props.match.params.page);
-        }  
+        }
       }
 
 
@@ -50,21 +57,21 @@ class Photos extends Component {
             })
         }
       }
-    
+
       render() {
         const photosArr = this.props.photos.map(url => {
             return (
                 <div className="ins-photo">
                     <img key={Math.random()*10000} src={url} alt=""/>
                 </div>
-            )   
+            )
         })
-        
-        if(this.state.loading === true) { 
+
+        if(this.state.loading === true) {
             return (
                 <div className="posts">
                   <div className="lds-dual-ring"></div>
-                </div>   
+                </div>
             )
         }else {
             return (
@@ -74,12 +81,12 @@ class Photos extends Component {
                     <div className="btn-container">
                         <button className="btn-previous" onClick={this.handleClickPrev}>PREVIOUS</button>
                         <button className="btn-next" onClick={this.handleClickNext}>NEXT</button>
-                    </div>     
+                    </div>
                 </div>
             )
         }
-        
-        
+
+
     }
 }
 

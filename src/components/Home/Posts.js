@@ -6,12 +6,17 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import { getAllPosts } from "../store/actions/allActions";
 import { customStyles } from './customStyles';
-
+import ReactGA from 'react-ga'
 
 
 class Posts extends React.Component {
   state = {
     loading: true,
+  }
+
+  UNSAFE_componentWillMount(){
+    ReactGA.set({ page: window.location.pathname });
+    ReactGA.pageview(window.location.pathname)
   }
 
   componentDidMount() {
@@ -35,7 +40,7 @@ class Posts extends React.Component {
     this.props.history.push("/posts/" + e.target.id);
   };
 
-  
+
   render() {
     const posts = this.props.posts;
     const postList = posts.map(post => {
@@ -69,7 +74,7 @@ class Posts extends React.Component {
       return (
         <div className="posts">
           <div className="lds-dual-ring"></div>
-        </div>   
+        </div>
       )
     }else {
       const modalBodyPar = this.props.modalBody.map(par => {

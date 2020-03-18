@@ -1,6 +1,7 @@
 import React from 'react'
 import Posts from './Posts'
 
+
 function Home(props) {
     return (
         <Posts />

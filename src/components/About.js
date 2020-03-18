@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
+import ReactGA from "react-ga";
 
 export default function About(props) {
+
+  useEffect(()=> {
+    ReactGA.set({ page: window.location.pathname });
+    ReactGA.pageview(window.location.pathname);
+  })
+
   return (
     <div className="about-container center">
       <div className="about">
@@ -17,7 +24,7 @@ export default function About(props) {
             src="/images/about-signature.png"
             alt=""
           />
-        </div>
+          </div>
       </div>
     </div>
   );

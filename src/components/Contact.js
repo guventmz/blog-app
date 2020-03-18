@@ -2,6 +2,8 @@ import React from "react";
 import { connect } from "react-redux"
 import { postContact } from "./store/actions/allActions"
 import Submited from "./Submitted";
+import ReactGA from "react-ga";
+
 
 class Contact extends React.Component {
   state = {
@@ -10,6 +12,11 @@ class Contact extends React.Component {
     text: null,
     isSubmited: false
   };
+
+  componentDidMount(){
+    ReactGA.set({ page: window.location.pathname });
+    ReactGA.pageview(window.location.pathname);
+  }
 
   handleChange = e => {
     if (e.target.id === "name") {
@@ -36,7 +43,6 @@ class Contact extends React.Component {
   };
 
   render() {
-    console.log(this.props.history);
     if (this.state.isSubmited === false) {
       return (
         <div className="contact-container">

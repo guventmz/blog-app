@@ -1,13 +1,19 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getSinglePost } from "../store/actions/allActions";
+import ReactGA from 'react-ga'
 
 class PostDetails extends Component {
-  
+
   state = {
     loading: true
   }
-  
+
+  UNSAFE_componentWillMount(){
+    ReactGA.set({ page: window.location.pathname });
+    ReactGA.pageview(window.location.pathname);
+  }
+
   componentDidMount() {
     this.props.getSinglePost(this.props.match.params.postId);
   }
