@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux"
-import { postContact } from "./store/actions/allActions"
+import { postContact } from "../store/actions/allActions"
 import Submited from "./Submitted";
 import ReactGA from "react-ga";
 

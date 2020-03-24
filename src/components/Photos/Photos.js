@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
-import { getPhotos } from "./store/actions/allActions"
+import { getPhotos } from "../store/actions/allActions"
 import ReactGA from 'react-ga'
 
 class Photos extends Component {
@@ -35,7 +35,7 @@ class Photos extends Component {
       handleClickNext = (e) => {
         e.preventDefault();
         let num = parseInt(this.props.match.params.page);
-        if(num < 3){
+        if(num < 4){
             num += 1;
             num.toString();
             this.props.history.push("/photos/" + num);
