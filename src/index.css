@@ -218,7 +218,7 @@ body {
   padding-top: 20px;
 }
 
-.posts button,
+.posts .posts-btn,
 .modal-button {
   display: inline-block;
   padding: 10px 22px;
@@ -231,7 +231,7 @@ body {
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
 }
-.posts button:hover,
+.posts .posts-btn:hover,
 .modal-button:hover {
   -webkit-transform: scale(1.1);
       -ms-transform: scale(1.1);
@@ -892,6 +892,7 @@ form button:hover {
   flex-wrap: nowrap;
   align-items: center;
   justify-content: space-around;
+  z-index:1;
 }
 
 .btn-next, .btn-previous {
@@ -905,6 +906,7 @@ form button:hover {
   -webkit-transition: 0.3s ease;
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
+  z-index: 1;
 }
 
 .btn-next:hover, .btn-previous:hover {

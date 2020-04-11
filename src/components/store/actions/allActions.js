@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export const getAllPosts = () => {
+export const getAllPosts = (page2) => {
   return dispatch => {
-    axios.get("http://blog-app-rest.herokuapp.com/api/posts").then(res => {
+    axios.get("http://blog-app-rest.herokuapp.com/api/page/" + page2).then(res => {
       return dispatch({ type: "GET_ALL_POSTS", payload: res.data });
     });
   };

@@ -19,7 +19,7 @@ export class App extends Component {
       <BrowserRouter>
         <NavBar />
           <Switch>
-            <Route path='/' exact component={Home} />
+            <Route path='/page/:page2' component={Home} />
             <Route path='/about' component={About}/>
             <Route path='/contact' component={Contact}/>
             <Route path='/posts/:postId' component={PostDetails}/>

@@ -5,12 +5,12 @@ export default function NavBar() {
   return (
     <nav>
       <div className="nav-wrapper grey">
-        <a href="/" className="brand-logo">
+        <a href="/page/1" className="brand-logo">
           <img src="/images/navbar-brand.png" alt="" />
         </a>
         <ul id="nav-mobile" className="right hide-on-med-and-down">
           <li>
-            <NavLink to="/">Home</NavLink>
+            <NavLink to="/page/1">Home</NavLink>
           </li>
           <li>
             <NavLink to="/photos/1">Photos</NavLink>

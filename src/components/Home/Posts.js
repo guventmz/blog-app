@@ -6,7 +6,8 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import { getAllPosts } from "../store/actions/allActions";
 import { customStyles } from './customStyles';
-import ReactGA from 'react-ga'
+import ReactGA from 'react-ga';
+import uuid from 'react-uuid';
 
 
 class Posts extends React.Component {
@@ -20,14 +21,20 @@ class Posts extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getAllPosts();
+    this.props.getAllPosts(this.props.match.params.page2);
   }
 
-  componentDidUpdate() {
+  UNSAFE_componentWillUpdate() {
     if(this.state.loading === true){
       this.setState({
         loading: false
       })
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if(this.props.location !== prevProps.location){
+        this.props.getAllPosts(this.props.match.params.page2);
     }
   }
 
@@ -40,10 +47,36 @@ class Posts extends React.Component {
     this.props.history.push("/posts/" + e.target.id);
   };
 
+  handleClickNext = (e) => {
+    e.preventDefault();
+    let num = parseInt(this.props.match.params.page2);
+    if(num < 4){
+        num += 1;
+        num.toString();
+        this.props.history.push("/page/" + num);
+        this.setState({
+            loading: true
+        })
+    }
+  }
+
+  handleClickPrev = (e) => {
+    e.preventDefault();
+    let num = parseInt(this.props.match.params.page2);
+    if(num>1){
+        num -= 1;
+        num.toString();
+        this.props.history.push("/page/" + num);
+        this.setState({
+            loading: true
+        })
+    }
+  }
 
   render() {
     const posts = this.props.posts;
     const postList = posts.map(post => {
+      //paragraph mapping
       const body = post.body.split("\\n").join("");
       return (
         <div key={post.id} className="post">
@@ -61,7 +94,7 @@ class Posts extends React.Component {
             <br />
             <button
               id={post.id}
-              className="btn grey darken-3"
+              className="posts-btn"
               onClick={this.handleClick}
             >
               See More
@@ -77,14 +110,16 @@ class Posts extends React.Component {
         </div>
       )
     }else {
+      //modal return
       const modalBodyPar = this.props.modalBody.map(par => {
         return (
-          <p key={Math.random()*10000} className="modal-par">{par}</p>
+          <p key={uuid()} className="modal-par">{par}</p>
         )
       })
+      // actual rendering
       return (
         <div className="posts">
-        <ReactModal isOpen={(this.props.allCookies.modalIsOpen === undefined)} style={customStyles}>
+          <ReactModal ariaHideApp={false} isOpen={(this.props.allCookies.modalIsOpen === undefined)} style={customStyles}>
             <h1 className="card-title modal-card-title">{this.props.modal.title}</h1>
             {modalBodyPar}
             <button onClick={this.closeModal} className="modal-button">Close</button>
@@ -96,6 +131,10 @@ class Posts extends React.Component {
           />
           <h1 className="card-title" style={{paddingTop: 50, paddingBottom: 50}}>Latest Posts</h1>
           {postList}
+          <div className="btn-container">
+            <button className="btn-previous" onClick={this.handleClickPrev}>PREVIOUS</button>
+            <button className="btn-next" onClick={this.handleClickNext}>NEXT</button>
+          </div>
         </div>
       );
     }
@@ -112,8 +151,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getAllPosts: () => {
-      dispatch(getAllPosts());
+    getAllPosts: (page2) => {
+      dispatch(getAllPosts(page2));
     }
   };
 };

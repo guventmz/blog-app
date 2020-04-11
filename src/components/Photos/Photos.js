@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
 import { getPhotos } from "../store/actions/allActions"
-import ReactGA from 'react-ga'
+import ReactGA from 'react-ga';
+import uuid from 'react-uuid';
 
 class Photos extends Component {
 
@@ -61,8 +62,8 @@ class Photos extends Component {
       render() {
         const photosArr = this.props.photos.map(url => {
             return (
-                <div className="ins-photo">
-                    <img key={Math.random()*10000} src={url} alt=""/>
+                <div className="ins-photo" key={uuid()}>
+                    <img src={url} alt=""/>
                 </div>
             )
         })
