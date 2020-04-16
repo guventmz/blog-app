@@ -6,6 +6,7 @@ import About from './components/About/About'
 import NavBar from './components/NavBar/NavBar'
 import Photos from './components/Photos/Photos'
 import PostDetails from './components/Home/PostDetails'
+import Redirect from './components/Redirect'
 import { connect } from 'react-redux'
 import ReactGA from 'react-ga'
 
@@ -19,6 +20,7 @@ export class App extends Component {
       <BrowserRouter>
         <NavBar />
           <Switch>
+            <Route exact path="/" component={Redirect} />
             <Route path='/page/:page2' component={Home} />
             <Route path='/about' component={About}/>
             <Route path='/contact' component={Contact}/>
