@@ -126,7 +126,7 @@ class Posts extends React.Component {
           </ReactModal>
           <img
             className="socrates"
-            src="/images/posts-socrates.png"
+            src="/images/posts-socrates-min.png"
             alt=""
           />
           <h1 className="card-title" style={{paddingTop: 50, paddingBottom: 50}}>Latest Posts</h1>
