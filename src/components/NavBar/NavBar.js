@@ -12,9 +12,9 @@ export default function NavBar() {
           <li>
             <NavLink to="/page/1">Posts</NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink to="/photos/1">Photos</NavLink>
-          </li>
+          </li> */}
           <li>
             <NavLink to="/about">About</NavLink>
           </li>
