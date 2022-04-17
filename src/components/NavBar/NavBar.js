@@ -10,7 +10,7 @@ export default function NavBar() {
         </a>
         <ul id="nav-mobile" className="right hide-on-med-and-down">
           <li>
-            <NavLink to="/page/1">Home</NavLink>
+            <NavLink to="/page/1">Posts</NavLink>
           </li>
           <li>
             <NavLink to="/photos/1">Photos</NavLink>
