@@ -1,13 +1,10 @@
 import React from "react";
-import ReactModal from "react-modal";
 import { withCookies } from 'react-cookie';
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { getAllPosts } from "../store/actions/allActions";
-import { customStyles } from './customStyles';
 import ReactGA from 'react-ga';
-import uuid from 'react-uuid';
 
 
 class Posts extends React.Component {
@@ -110,20 +107,9 @@ class Posts extends React.Component {
         </div>
       )
     }else {
-      //modal return
-      const modalBodyPar = this.props.modalBody.map(par => {
-        return (
-          <p key={uuid()} className="modal-par">{par}</p>
-        )
-      })
       // actual rendering
       return (
         <div className="posts">
-          <ReactModal ariaHideApp={false} isOpen={(this.props.allCookies.modalIsOpen === undefined)} style={customStyles}>
-            <h1 className="card-title modal-card-title">{this.props.modal.title}</h1>
-            {modalBodyPar}
-            <button onClick={this.closeModal} className="modal-button">Close</button>
-          </ReactModal>
           <img
             className="socrates"
             src="/images/posts-socrates-min.png"
